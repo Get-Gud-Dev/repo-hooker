@@ -16,15 +16,17 @@ var endpoints = require('./config/endpoints.json')
 
 app.post('/update/:repo', urlEncodedParser, function (req,res) {
 
-    console.log(req.body.secret)
-    console.log(req.params.repo)
-    res.json({secret:req.body.secret, repo:req.params.repo})
 
 
     let endpoint = endpoints[req.params.repo]
-    if(endpoint && endpoint.secret == secret )
+    if(endpoint != null && endpoint.secret == req.body.secret )
     {
         puller.pullRepo(endpoint)
+        res.json({msg:"Good"})
+    }
+    else{
+        res.json({msg:"Bad"})
+
     }
 
 })
