@@ -3,7 +3,7 @@ Description=Pulls repos in automatigically
 
 [Service]
 Type=simple
-ExecStart=bash /user/bin/repo-hooker.sh
+ExecStart=bash /usr/bin/repo-hooker.sh
 
 [Install]
 WantedBy=multi-user.target
