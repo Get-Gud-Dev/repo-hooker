@@ -10,7 +10,6 @@
   "license": "Unlicense",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "cf-gg": "file:../cf-gg",
     "express": "^4.17.1"
   }
 }
