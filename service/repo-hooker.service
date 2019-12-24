@@ -4,6 +4,7 @@ Description=Pulls repos in automatigically
 [Service]
 Type=simple
 ExecStart=bash /usr/bin/repo-hooker.sh
+User=gettengud
 
 [Install]
 WantedBy=multi-user.target
