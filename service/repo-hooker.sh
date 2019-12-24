@@ -1,0 +1,1 @@
+cd /home/gettengud/repo-hooker/ && node ./app.js

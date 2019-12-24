@@ -1,0 +1,9 @@
+[Unit]
+Description=Pulls repos in automatigically
+
+[Service]
+Type=simple
+ExecStart=bin/bash /user/bin/repo-hooker.sh
+
+[Install]
+WantedBy=multi-user.target
