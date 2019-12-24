@@ -1,1 +1,1 @@
-cd /home/gettengud/repo-hooker/ && node ./app.js
+cd /home/gettengud/repo-hooker/ && node ./app.j
