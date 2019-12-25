@@ -35,6 +35,6 @@ function hookToDB(hookObj){
 }
 
 exports.logHook = function(type, ip, url, time, log){
-    hookToDB({type:type, ip:ip, url:url, time:time, log:log})
+    hookToDB({Type:type, IP:ip, URL:url, Time:time, Log:log})
 }
 
