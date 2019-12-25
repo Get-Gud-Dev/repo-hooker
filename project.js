@@ -27,7 +27,7 @@ db.connect(() =>{
             }
         }
 
-        let secret = argv[5] || crypto.randomBytes(64).toString('hex')
+        let secret = process.argv[5] || crypto.randomBytes(64).toString('hex')
 
         let shaSecret = crypto.createHash("sha1").update(secret).digest('hex')
 
