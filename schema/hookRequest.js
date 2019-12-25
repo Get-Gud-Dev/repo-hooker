@@ -9,4 +9,4 @@ const hookRequestSchema = new mongoose.Schema(
     Log: String
 })
 
-exports.Model = mongoose.Model("Hook Request", hookRequestSchema)
+exports.Model = mongoose.model("Hook Request", hookRequestSchema)
