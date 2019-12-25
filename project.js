@@ -10,6 +10,8 @@ const crypto = require('crypto')
 db.connect(() =>{
     /* node project.js create :label :path :secret(opt)
     */
+    console.log(process.argv)
+
     if(command === "create")
     {
         let label = process.argv[3].toLowerCase()
