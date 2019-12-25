@@ -23,8 +23,8 @@ app.post('/update/:repo', urlEncodedParser, function (req,res) {
     let endpoint = endpoints[req.params.repo]
     if(endpoint != null && endpoint.secret == req.body.secret )
     {
-        puller.pullRepo(endpoint)
-        hookerLog.logHook("push", req.ips.join(', '), req.originalUrl, Date.now(), )
+        let result = puller.pullRepo(endpoint)
+        hookerLog.logHook("push", req.ip, req.originalUrl, Date.now(), result)
         res.json({msg:"Good!"})
     }
     else{
