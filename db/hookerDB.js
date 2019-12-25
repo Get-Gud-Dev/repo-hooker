@@ -13,6 +13,7 @@ exports.connect = function(callback){
     db.once('open', function(){
         hookerModel = require('../schema/hookRequest').model
         checkHookerCache()
+        callback()
     })
     
 }
