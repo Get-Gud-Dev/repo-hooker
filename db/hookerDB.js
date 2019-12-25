@@ -30,7 +30,7 @@ function checkHookerCache(){
 
 //If you trust the object, write it to the database.
 function hookToDB(hookObj){
-    let newHookRequest = new HookRequest(hookObj)
+    let newHookRequest = new hookerModel(hookObj)
     newHookRequest.save()
 }
 
