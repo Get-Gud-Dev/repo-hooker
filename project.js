@@ -12,7 +12,7 @@ db.connect(() =>{
     */
     console.log(process.argv)
 
-    if(command === "create")
+    if(command == "create")
     {
         let label = process.argv[3].toLowerCase()
 
