@@ -7,7 +7,7 @@ var hookerCache = []
 
 exports.connect = function(callback){
 
-    mongoose.connect('mongodb://localhost:27016/repo-hooker', {useNewUrlParser:true})
+    mongoose.connect('mongodb://localhost:27017/repo-hooker', {useNewUrlParser:true})
     let db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'))
     db.once('open', function(){
