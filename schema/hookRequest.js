@@ -6,7 +6,8 @@ const hookRequestSchema = new mongoose.Schema(
     IP: String,
     URL: String,
     Time: Date,
-    Log: String
+    Log: String,
+    Build: {type: mongoose.Schema.Types.ObjectId, ref:"Hook Build"}
 })
 
 exports.Model = mongoose.model("Hook Request", hookRequestSchema)

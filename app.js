@@ -34,6 +34,10 @@ app.post('/update/:repo', urlEncodedParser, function (req,res) {
 
 })
 
+app.post('/review', urlEncodedParser, function(req, res) {
+    res.json({output:puller.checkBuild(req.body.url)})
+})
+
 hookerLog.connect(() => {
     app.listen(8080, () => {console.log("Listening on port 8080.")})
 
