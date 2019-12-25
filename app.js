@@ -7,21 +7,22 @@ const puller = require('./puller')
 
 const hookerLog = require('./db/hookerDB')
 
+const crypto = require('crypto')
 
 const urlEncodedParser = bodyParser.urlencoded( {extended:false} )
 app.use(urlEncodedParser)
 
-// Load the endpoint configurations
 
 var endpoints = require('./config/endpoints.json')
 
-// Create a route for each configuration
+
 
 app.post('/update/:repo', urlEncodedParser, function (req,res) {
 
-    
     let endpoint = endpoints[req.params.repo]
-    if(endpoint != null && endpoint.secret == req.body.secret )
+
+
+    if(endpoint != null && crypto. endpoint.secret == req.body.secret )
     {
         let result = puller.pullRepo(endpoint)
         hookerLog.logHook("push", req.ip, req.originalUrl, Date.now(), result)
