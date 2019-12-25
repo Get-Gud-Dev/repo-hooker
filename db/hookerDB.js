@@ -11,7 +11,7 @@ exports.connect = function(callback){
     let db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'))
     db.once('open', function(){
-        hookerModel = require('../schema/hookRequest').model
+        hookerModel = require('../schema/hookRequest').Model
         checkHookerCache()
         callback()
     })
