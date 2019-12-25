@@ -12,19 +12,9 @@ exports.connect = function(callback){
     db.on('error', console.error.bind(console, 'connection error:'))
     db.once('open', function(){
 
-        checkHookerCache()
         callback()
     })
     
-}
-
-function checkHookerCache(){
-    if(hookerCache.length > 0)
-    {
-        array.forEach(element => {
-            hookToDB()
-        });
-    }
 }
 
 

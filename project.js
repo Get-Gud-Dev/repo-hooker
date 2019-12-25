@@ -20,9 +20,11 @@ db.connect(() =>{
 
         for(var char in label)
         {
-            if(!allowedChars.includes(label[char]))
+            if(!allowedChars.includes(label[char])){
+
                 console.log("project names may only be alphanumerics and '-'")
                 return
+            }
         }
 
         let secret = argv[5] || crypto.randomBytes(64).toString('hex')
