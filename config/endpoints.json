@@ -5,6 +5,7 @@
     },
     "hooker":{
         "secret":"psedighaoj890vnm13imi1mgsjhaphg89023htgioneawsgtio;hi;ghpe209hg1390hg13hgb8sdfo8yage78bf378ogt218713tb3tbu&*TB!#&TB",
-        "path":"/home/gettengud/repo-hooker"
+        "path":"/home/gettengud/repo-hooker",
+        "cmd":["npm install"]
     }
 }
