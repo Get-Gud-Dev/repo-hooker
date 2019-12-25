@@ -22,10 +22,10 @@ app.post('/update/:repo', urlEncodedParser, function (req,res) {
     if(endpoint != null && endpoint.secret == req.body.secret )
     {
         puller.pullRepo(endpoint)
-        res.json({msg:"Good"})
+        res.json({msg:"Good!"})
     }
     else{
-        res.json({msg:"Bad"})
+        res.json({msg:"Good"})
 
     }
 
