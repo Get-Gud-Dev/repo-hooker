@@ -1,16 +1,17 @@
-var HookRequest = require('../schema/hookRequest').Model
-
 var mongoose = require('mongoose')
+
+var hookerModel;
 
 var hookerCache = []
 
 
-function connect(callback){
+exports.connect = function(callback){
 
     mongoose.connect('mongodb://localhost:27016/repo-hooker', {useNewUrlParser:true})
     let db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'))
     db.once('open', function(){
+        hookerModel = require('../schema/hookRequest').model
         checkHookerCache()
     })
     
