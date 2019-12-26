@@ -34,7 +34,7 @@ exports.pullRepo = (endpoint) => {
                 delete(active_builds[endpoint.label])
             })
         })
-        return pullProc
+        return build._id
     }
     catch(e){
         console.log(e)
