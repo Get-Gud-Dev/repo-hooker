@@ -25,7 +25,7 @@ app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
             {
 
                 let result = puller.pullRepo(doc)
-                hookerLog.logHook("push", req.ip, req.originalUrl, Date.now(), result)
+                hookerLog.logHook("push", req.ip, req.originalUrl, Date.now().toString(), result)
     
                 res.json({msg:"Good!"})
             }
