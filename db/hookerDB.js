@@ -19,12 +19,12 @@ exports.connect = function(callback){
 
 
 //If you trust the object, write it to the database.
-function hookToDB(hookObj, callback){
+function hookToDB(hookObj){
     let newHookRequest = new hookerModel(hookObj)
     newHookRequest.save((err) => {
         if(err)
             console.log(err)
-        else callback()
+        else console.log("save")
     })
 }
 
