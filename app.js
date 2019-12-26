@@ -44,7 +44,6 @@ app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
 
 app.post('/review', urlEncodedParser, function(req, res) {
     puller.checkBuild(req.body.url, (callback) =>{
-
         res.json({output:callback})
     })
 })
