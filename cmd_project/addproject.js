@@ -22,7 +22,7 @@ module.exports = function(args) {
 
     let newProject = new Project({label:label, path:process.argv[4], secret:shaSecret})
 
-    res.save((err) =>{
+    newProject.save((err) =>{
         if(err){
             console.log(err)
             process.exit(1)
