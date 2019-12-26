@@ -1,5 +1,5 @@
 [Unit]
-Description=Pulls repos in automatigically
+Description=Pulls repos in automagically
 
 [Service]
 Type=simple

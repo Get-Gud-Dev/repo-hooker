@@ -19,7 +19,7 @@ exports.pullRepo = (endpoint) => {
 
     active_builds[endpoint.label] = build
 
-    const pullProc = spawn('cd ' + endpoint.path + " && git pull")
+    const pullProc = spawn('cd ' + endpoint.path) //+ " && git pull")
     
     pullProc.stdout.on('data', (data) =>{
         build.output += "\n" + data;
@@ -29,6 +29,12 @@ exports.pullRepo = (endpoint) => {
         build.output += "\n" + data;
     })
 
+    pullProc.on('exit', function(){
+        build.output += "\nComplete!"
+        build.save((err) => {
+            delete(active_builds[endpoint.label])
+        })
+    })
     return pullProc
 }
 
