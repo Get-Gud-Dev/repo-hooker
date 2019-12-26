@@ -19,9 +19,13 @@ exports.connect = function(callback){
 
 
 //If you trust the object, write it to the database.
-function hookToDB(hookObj){
+function hookToDB(hookObj, callback){
     let newHookRequest = new hookerModel(hookObj)
-    newHookRequest.save()
+    newHookRequest.save((err) => {
+        if(err)
+            console.log(err)
+        else callback()
+    })
 }
 
 exports.logHook = function(type, ip, url, time, log){
