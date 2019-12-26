@@ -10,9 +10,14 @@ module.exports = function(argv) {
         else if(res != null)
         {
             res.commands.push(commandText)
-            res.save()
-            console.log("Command added to sequence: " + commandText)
-            process.exit(0)
+            res.save((err, res) =>{
+                if(err){
+                    console.log(err)
+                    process.exit(1)
+                }
+                console.log("Command added to sequence: " + commandText)
+                process.exit(0)
+            })
         }
         else{
             console.log("No project found: " + label)

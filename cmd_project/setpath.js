@@ -12,9 +12,15 @@ module.exports = function(argv) {
         else if(res != null)
         {
             res.path = path
-            res.save()
-            console.log("Path set to : " + path)
-            process.exit(0)
+            res.save((err, res) =>{
+                if(err){
+                    console.log(err)
+                    process.exit(1)
+                }
+                    
+                console.log("Path set to : " + path)
+                process.exit(0)
+            })
 
         }
         else{

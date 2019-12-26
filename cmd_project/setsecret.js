@@ -16,9 +16,15 @@ module.exports = function(argv) {
         else if(res != null)
         {
             res.secret = shaSecret
-            res.save()
-            console.log("Secret set to : " + secret)
-            process.exit(0)
+            res.save((err, res) =>{
+                if(err){
+                    console.log(err)
+                    process.exit(1)
+                }
+                console.log("Secret set to : " + secret)
+                process.exit(0)
+
+            })
 
         }
         else{
