@@ -24,7 +24,7 @@ exports.pullRepo = (endpoint) => {
                 console.log(error)
             }
 
-            build.output = stdout
+            build.output += stdout
             build.output += stderr
 
             build.save();
