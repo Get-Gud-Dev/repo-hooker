@@ -9,7 +9,7 @@ module.exports = function(args) {
         if(!allowedChars.includes(label[char])){
 
             console.log("project names may only be alphanumerics and '-'")
-            return
+            process.exit(1)
         }
     }
 
@@ -23,5 +23,6 @@ module.exports = function(args) {
 
     console.log("New project created:\n YOUR SECRET IS: " + secret + "DO NOT LOSE IT! " + newProject + " ")
 
+    process.exit(0)
 
 }

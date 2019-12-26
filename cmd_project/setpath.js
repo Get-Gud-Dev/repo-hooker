@@ -5,16 +5,22 @@ module.exports = function(argv) {
     let label = argv[3]
     let path = argv[4]
     Project.findOne({label:label}, (err, res) => {
-        if(err)
+        if(err){
             console.log("Error: " + err)
+            process.exit(1)
+        }
         else if(res != null)
         {
             res.path = path
             res.save()
             console.log("Path set to : " + path)
+            process.exit(0)
+
         }
         else{
             console.log("No project found: " + label)
+            process.exit(1)
+        
         }
     })
 }

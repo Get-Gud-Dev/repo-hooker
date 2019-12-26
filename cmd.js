@@ -31,8 +31,8 @@ db.connect(() =>{
     }
     else{
         console.log("Command not found!")
-        return
+        process.exit(1)
     }
 })
 
-return;
+process.exit(0)

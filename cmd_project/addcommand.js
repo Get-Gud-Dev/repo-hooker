@@ -12,9 +12,11 @@ module.exports = function(argv) {
             res.commands.push(commandText)
             res.save()
             console.log("Command added to sequence: " + commandText)
+            process.exit(0)
         }
         else{
             console.log("No project found: " + label)
+            process.exit(1)
         }
     })
 }
