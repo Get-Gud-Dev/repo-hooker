@@ -24,7 +24,7 @@ module.exports = function(args) {
 
     newProject.save()
 
-    console.log("New project created:\n YOUR SECRET IS: " + secret + "DO NOT LOSE IT! " + newProject + " ")
+    console.log("New project created:\n YOUR SECRET IS: " + secret + " DO NOT LOSE IT! " + newProject + " ")
 
     process.exit(0)
 
