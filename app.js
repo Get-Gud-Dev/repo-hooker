@@ -20,20 +20,23 @@ app.use(urlEncodedParser)
 app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
 
     let endpoint =  project.findOne( {label: req.params.repo.toLowerCase()}, (err, doc) => {
-        if(doc != null && doc.secret == req.body.secret )
+        if(doc != null)
         {
             let remoteSecret = req.body.secret.split('=')[1]
 
             if(crypto.timingSafeEqual(Buffer.from(doc.secret), remoteSecret))
+            {
 
-            let result = puller.pullRepo(endpoint)
-            hookerLog.logHook("push", req.ip, req.originalUrl, Date.now(), result)
-
-            res.json({msg:"Good!"})
+                let result = puller.pullRepo(endpoint)
+                hookerLog.logHook("push", req.ip, req.originalUrl, Date.now(), result)
+    
+                res.json({msg:"Good!"})
+            }
+            else
+                res.json({msg: doc.secret + " \n " + req.body.secret})
         }
         else{
-    
-            res.json({msg: doc.secret + " \n " + req.body.secret})
+            res.json({msg:'What are you talking about?'})
         }
     })
 
