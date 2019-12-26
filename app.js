@@ -36,7 +36,10 @@ app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
 })
 
 app.post('/review', urlEncodedParser, function(req, res) {
-    res.json({output:puller.checkBuild(req.body.url)})
+    puller.checkBuild(req.body.url, (callback) =>{
+
+        res.json({output:callback})
+    })
 })
 
 hookerLog.connect(() => {
