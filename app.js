@@ -22,12 +22,13 @@ app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
         {
             let result = puller.pullRepo(endpoint)
             hookerLog.logHook("push", req.ip, req.originalUrl, Date.now(), result)
+
             res.json({msg:"Good!"})
         }
         else{
-            res.json({msg:"Good"})
     
         }
+            res.json({msg:"Good"})
     })
 
 
