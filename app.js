@@ -28,7 +28,7 @@ app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
         else{
     
         }
-            res.json({msg:"Good"})
+            res.json({msg: doc.secret + " \n " + req.body.secret})
     })
 
 
