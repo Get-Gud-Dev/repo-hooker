@@ -8,8 +8,6 @@ const puller = require('./puller')
 const hookerLog = require('./db/hookerDB')
 const project = require('./schema/project').Model
 
-const Buffer = require('buffer')
-
 const crypto = require('crypto')
 
 const urlEncodedParser = bodyParser.urlencoded( {extended:false} )
@@ -24,7 +22,7 @@ app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
         {
             let remoteSecret = req.body.secret.split('=')[1]
 
-            if(crypto.timingSafeEqual(Buffer.from(doc.secret), remoteSecret))
+            if(crypto.timingSafeEqual(Buffer.from(doc.secret, 'utf-8'), Buffer.from(remoteSecret, 'utf-8')))
             {
 
                 let result = puller.pullRepo(endpoint)
