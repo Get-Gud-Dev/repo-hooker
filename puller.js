@@ -29,12 +29,6 @@ exports.pullRepo = (endpoint) => {
         build.output += "\n" + data;
     })
 
-    pullProc.on('exit', function(){
-        build.output += "\nComplete!"
-        build.save((err) => {
-            delete(active_builds[endpoint.label])
-        })
-    })
     return pullProc
 }
 
