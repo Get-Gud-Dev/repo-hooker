@@ -19,21 +19,29 @@ app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
     project.findOne( {label: req.params.repo.toLowerCase()}, (err, doc) => {
         if(doc != null)
         {
-            let remoteSecret = req.body['X-Hub-Signature'].split('=')[1]
+            if(req.body['X-Hub-Signature'] != null){
+                let remoteSecret = req.body['X-Hub-Signature'].split('=')[1]
+    
+                if(crypto.timingSafeEqual(Buffer.from(doc.secret, 'utf-8'), Buffer.from(remoteSecret, 'utf-8')))
+                {
+    
+                    let result = puller.pullRepo(doc)
+                    hookerLog.logHook("push", req.ip, req.originalUrl, Date.now().toString(), result)
+                    
+                    res.json({msg:"Good!"})
+                }
+                else{
+                    res.json({msg: doc.secret + " \n " + req.body.secret})
+                    hookerLog.logHook("push", req.ip, req.originalUrl, Date.now().toString(), "BAD_PASS")
+                    
+                }
 
-            if(crypto.timingSafeEqual(Buffer.from(doc.secret, 'utf-8'), Buffer.from(remoteSecret, 'utf-8')))
-            {
-
-                let result = puller.pullRepo(doc)
-                hookerLog.logHook("push", req.ip, req.originalUrl, Date.now().toString(), result)
-                
-                res.json({msg:"Good!"})
             }
-            else
-                res.json({msg: doc.secret + " \n " + req.body.secret})
         }
         else{
             res.json({msg:'What are you talking about?'})
+            hookerLog.logHook("push", req.ip, req.originalUrl, Date.now().toString(), "NO PASS")
+
         }
     })
 
