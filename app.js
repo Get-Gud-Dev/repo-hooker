@@ -21,7 +21,7 @@ app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
         {
             if(req.body['X-Hub-Signature'] != null){
                 let remoteSecret = req.body['X-Hub-Signature'].split('=')[1]
-                let computedSecret = crypto.createHmac('sha1', doc.secret).update(req.body).digest('hex')
+                let computedSecret = crypto.createHmac('sha1', doc.secret).update(JSON.stringify(req.body)).digest('hex')
                 if(crypto.timingSafeEqual(Buffer.from(computedSecret, 'utf8'), Buffer.from(remoteSecret, 'utf8')))
                 {
     
