@@ -31,16 +31,20 @@ app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
                     res.json({msg:"Good!"})
                 }
                 else{
-                    res.json({msg: doc.secret + " \n " + req.body.secret})
+                    res.json({msg: "Huh?"})
                     hookerLog.logHook("push", req.ip, req.originalUrl, Date.now().toString(), "BAD_PASS")
                     
                 }
 
             }
+            else{
+                res.json({msg: doc.secret + " \n " + req.body.secret})
+                hookerLog.logHook("push", req.ip, req.originalUrl, Date.now().toString(), "NO PASS")
+            }
         }
         else{
             res.json({msg:'What are you talking about?'})
-            hookerLog.logHook("push", req.ip, req.originalUrl, Date.now().toString(), "NO PASS")
+            hookerLog.logHook("push", req.ip, req.originalUrl, Date.now().toString(), "NO DOC")
 
         }
 
