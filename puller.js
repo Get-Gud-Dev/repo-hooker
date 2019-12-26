@@ -26,7 +26,6 @@ exports.pullRepo = (endpoint) => {
     
         pullProc.stderr.on('data', (data) =>{
             build.output += "\n" + data;
-            console.log(data)
         })
     
         pullProc.on('exit', function(){
