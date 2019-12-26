@@ -6,6 +6,7 @@ const app = express()
 const puller = require('./puller')
 
 const hookerLog = require('./db/hookerDB')
+const project = require('./schema/project').Model
 
 const crypto = require('crypto')
 
@@ -13,25 +14,24 @@ const urlEncodedParser = bodyParser.urlencoded( {extended:false} )
 app.use(urlEncodedParser)
 
 
-var endpoints = require('./config/endpoints.json')
+
+app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
+
+    let endpoint =  project.findOne( {label: req.params.repo.toLowerCase()}, (err, res) => {
+        if(res != null && res.secret == req.body.secret )
+        {
+            let result = puller.pullRepo(endpoint)
+            hookerLog.logHook("push", req.ip, req.originalUrl, Date.now(), result)
+            res.json({msg:"Good!"})
+        }
+        else{
+            res.json({msg:"Good"})
+    
+        }
+    })
 
 
 
-app.post('/update/:repo', urlEncodedParser, function (req,res) {
-
-    let endpoint = endpoints[req.params.repo]
-
-
-    if(endpoint != null && crypto. endpoint.secret == req.body.secret )
-    {
-        let result = puller.pullRepo(endpoint)
-        hookerLog.logHook("push", req.ip, req.originalUrl, Date.now(), result)
-        res.json({msg:"Good!"})
-    }
-    else{
-        res.json({msg:"Good"})
-
-    }
 
 })
 
