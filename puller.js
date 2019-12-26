@@ -1,6 +1,6 @@
 const Build = require('./schema/build').Model
 
-const { exec } = require('child_process')
+const exec = require('child_process').exec
 
 
 exports.pullRepo = (endpoint) => {
