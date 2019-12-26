@@ -1,1 +1,1 @@
-cd /home/gettengud/repo-hooker/ && npm start
+cd /gg-tools/repo-hooker/ && npm start
