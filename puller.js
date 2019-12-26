@@ -37,7 +37,7 @@ exports.pullRepo = (endpoint) => {
 
 exports.checkBuild = (label, callback) => {
 
-    Build.find({label:label}, {limit:5} , (err, res) => {
+    Build.find({label:label}, {}, {limit:5} , (err, res) => {
         callback(res)
     })
 
