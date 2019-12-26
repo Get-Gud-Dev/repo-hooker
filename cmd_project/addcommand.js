@@ -10,7 +10,7 @@ module.exports = function(argv) {
         else if(res != null)
         {
             res.commands.push(commandText)
-            res.save((err, res) =>{
+            res.save((err) =>{
                 if(err){
                     console.log(err)
                     process.exit(1)

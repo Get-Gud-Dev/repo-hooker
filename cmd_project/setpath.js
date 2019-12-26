@@ -12,7 +12,7 @@ module.exports = function(argv) {
         else if(res != null)
         {
             res.path = path
-            res.save((err, res) =>{
+            res.save((err) =>{
                 if(err){
                     console.log(err)
                     process.exit(1)
