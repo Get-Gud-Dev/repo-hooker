@@ -1,3 +1,6 @@
+const crypto = require('crypto')
+const Project = require('../schema/project').Model
+
 module.exports = function(args) {
 
     let label = process.argv[3].toLowerCase()
