@@ -38,7 +38,7 @@ app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
 
             }
             else{
-                res.json({msg: doc.secret + " \n " + req.body.secret})
+                res.json({msg:"Bad"})
                 hookerLog.logHook("push", req.ip, req.originalUrl, Date.now().toString(), "NO PASS")
             }
         }
