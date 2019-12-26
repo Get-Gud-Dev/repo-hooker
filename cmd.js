@@ -28,5 +28,9 @@ db.connect(() =>{
 
 
     }
+    else{
+        console.log("Command not found!")
+        return
+    }
 })
 
