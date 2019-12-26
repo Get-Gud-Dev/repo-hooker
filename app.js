@@ -55,7 +55,7 @@ app.post('/update/github/:repo', jsonEncodedParser, function (req,res) {
 
 })
 
-app.post('/review', urlEncodedParser, function(req, res) {
+app.post('/review', jsonEncodedParser, function(req, res) {
     puller.checkBuild(req.body.url, (callback) =>{
         res.json({callback})
     })
