@@ -19,7 +19,7 @@ exports.pullRepo = (endpoint) => {
 
     active_builds[endpoint.path] = build
 
-    const pullProc = spawn('cd ' + endpoint.path + " && git pull &&" + endpoint.cmd.join(' && '))
+    const pullProc = spawn('cd ' + endpoint.path + " && git pull" + (endpoint.cmd.length > 0 ? " &&" + endpoint.cmd.join(' && ') : "") )
     
     pullProc.stdout.on('data', (data) =>{
         build.output += "\n" + data;
