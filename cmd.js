@@ -27,7 +27,6 @@ db.connect(() =>{
 
         targetCommand(process.argv)
 
-
     }
     else{
         console.log("Command not found!")
@@ -35,4 +34,3 @@ db.connect(() =>{
     }
 })
 
-process.exit(0)
