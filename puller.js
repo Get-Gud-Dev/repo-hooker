@@ -9,7 +9,7 @@ exports.pullRepo = (endpoint) => {
 
     try{
         let build = new Build({output:"Build Initiated at " + Date.now().toString()})
-    
+        build.label = endpoint.label
         if(active_builds[endpoint.label] != null)
         {
             build.output += "A build for this path is already in progress, I'm cancelling and letting it finish"
