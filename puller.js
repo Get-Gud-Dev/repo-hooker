@@ -21,6 +21,8 @@ exports.pullRepo = (endpoint) => {
             build.output += stderr
 
             build.save();
+            console.log(stdout)
+            console.log("Build saved")
         })
         
     
