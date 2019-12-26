@@ -11,13 +11,13 @@ exports.pullRepo = (endpoint) => {
     
     let build = new Build({output:"Build Initiated at " + Date.now().toString()})
     
-    if(active_builds[endpoint.path] != null)
+    if(active_builds[endpoint.label] != null)
     {
         build.output += "A build for this path is already in progress, I'm cancelling and letting it finish"
         return;
     }
 
-    active_builds[endpoint.path] = build
+    active_builds[endpoint.label] = build
 
     const pullProc = spawn('cd ' + endpoint.path + " && git pull" + (endpoint.cmd.length > 0 ? " &&" + endpoint.cmd.join(' && ') : "") )
     
@@ -32,13 +32,13 @@ exports.pullRepo = (endpoint) => {
 }
 
 
-exports.checkBuild = (path, callback) => {
-    if(active_builds[path] != null){
-        callback(active_builds[path].output)
+exports.checkBuild = (label, callback) => {
+    if(active_builds[label] != null){
+        callback(active_builds[label].output)
         return
     }
 
-    Build.find({path:path}, {limit:5} , (err, res) => {
+    Build.find({label:label}, {limit:5} , (err, res) => {
         callback(res || err)
         return
     })
