@@ -10,11 +10,11 @@ const project = require('./schema/project').Model
 
 const crypto = require('crypto')
 
-const urlEncodedParser = bodyParser.urlencoded( {extended:false} )
-app.use(urlEncodedParser)
+const jsonEncodedParser = bodyParser.json( {extended:false} )
+app.use(jsonEncodedParser)
 
 
-app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
+app.post('/update/github/:repo', jsonEncodedParser, function (req,res) {
 
     project.findOne( {label: req.params.repo.toLowerCase()}, (err, doc) => {
         if(doc != null)
