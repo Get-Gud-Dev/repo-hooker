@@ -17,7 +17,7 @@ module.exports = function(args) {
 
     let shaSecret = crypto.createHash("sha1").update(secret).digest('hex')
 
-    let newProject = new Project({label:label, path:process.argv[4], shaSecret})
+    let newProject = new Project({label:label, path:process.argv[4], secret:shaSecret})
 
     newProject.save()
 
