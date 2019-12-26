@@ -24,10 +24,10 @@ app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
             if(crypto.timingSafeEqual(Buffer.from(doc.secret, 'utf-8'), Buffer.from(remoteSecret, 'utf-8')))
             {
 
-                let result = puller.pullRepo(doc)
                 hookerLog.logHook("push", req.ip, req.originalUrl, Date.now().toString(), result)
-    
+                
                 res.json({msg:"Good!"})
+                let result = puller.pullRepo(doc)
             }
             else
                 res.json({msg: doc.secret + " \n " + req.body.secret})
