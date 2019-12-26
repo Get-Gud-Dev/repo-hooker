@@ -13,7 +13,9 @@ const crypto = require('crypto')
 const urlEncodedParser = bodyParser.urlencoded( {extended:false} )
 app.use(urlEncodedParser)
 
-
+process.on('unhandledRejection', (err) => {
+    throw err;
+   });
 
 app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
 
