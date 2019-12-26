@@ -31,6 +31,6 @@ module.exports = function(args) {
     console.log("New project created:\n YOUR SECRET IS: " + secret + " DO NOT LOSE IT! " + newProject + " ")
 
     process.exit(0)
-    }
+    })
 
 }
