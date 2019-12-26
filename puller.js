@@ -11,7 +11,7 @@ exports.pullRepo = (endpoint) => {
 
     
    
-        exec("cd " + endpoint.path +" git pull", (error, stdout, stderr)=>{
+        exec("cd " + endpoint.path +" && git pull", (error, stdout, stderr)=>{
             if(error)
             {
                 build.output += error
