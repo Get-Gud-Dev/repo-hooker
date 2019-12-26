@@ -1,6 +1,6 @@
 const Build = require('./schema/build').Model
 
-const { spawn } = require('child_process')
+const { exec } = require('child_process')
 
 
 var active_builds = {}
@@ -18,22 +18,17 @@ exports.pullRepo = (endpoint) => {
     
         active_builds[endpoint.label] = build
     
-        const pullProc = spawn("ls")
+        exec("cd " + endpoint.path +" git pull", (error, stdout, stderr)=>{
+            if(error)
+            {
+                console.log(error)
+            }
+
+            build.output = stdout
+            build.output += stderr
+        })
         
-        pullProc.stdout.on('data', (data) =>{
-            build.output += "\n" + data;
-        })
     
-        pullProc.stderr.on('data', (data) =>{
-            build.output += "\n" + data;
-        })
-    
-        pullProc.on('exit', function(){
-            build.output += "\nComplete!"
-            build.save((err) => {
-                delete(active_builds[endpoint.label])
-            })
-        })
         return build._id
     }
     catch(e){
