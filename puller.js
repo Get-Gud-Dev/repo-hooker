@@ -18,7 +18,7 @@ exports.pullRepo = (endpoint) => {
     
         active_builds[endpoint.label] = build
     
-        const pullProc = spawn("git pull", {cwd:endpoint.path})
+        const pullProc = spawn("git pull")
         
         pullProc.stdout.on('data', (data) =>{
             build.output += "\n" + data;
