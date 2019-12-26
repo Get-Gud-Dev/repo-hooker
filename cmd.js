@@ -11,7 +11,8 @@ const commands = {
     addproject: require('./cmd_project/addproject'),
     addcommand: require('./cmd_project/addcommand'),
     listcommands: require('./cmd_project/listcommands'),
-    listprojects: require('./cmd_project/listprojects')
+    listprojects: require('./cmd_project/listprojects'),
+    setpath: require('./cmd_project/setpath')
 
 }
 
@@ -34,3 +35,4 @@ db.connect(() =>{
     }
 })
 
+return;
