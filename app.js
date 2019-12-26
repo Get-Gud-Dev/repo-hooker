@@ -19,7 +19,7 @@ app.post('/update/github/:repo', urlEncodedParser, function (req,res) {
     project.findOne( {label: req.params.repo.toLowerCase()}, (err, doc) => {
         if(doc != null)
         {
-            let remoteSecret = req.body.secret.split('=')[1]
+            let remoteSecret = req.body['X-Hub-Signature'].split('=')[1]
 
             if(crypto.timingSafeEqual(Buffer.from(doc.secret, 'utf-8'), Buffer.from(remoteSecret, 'utf-8')))
             {
