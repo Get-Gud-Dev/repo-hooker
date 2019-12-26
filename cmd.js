@@ -12,7 +12,8 @@ const commands = {
     addcommand: require('./cmd_project/addcommand'),
     listcommands: require('./cmd_project/listcommands'),
     listprojects: require('./cmd_project/listprojects'),
-    setpath: require('./cmd_project/setpath')
+    setpath: require('./cmd_project/setpath'),
+    setsecret: require('./cmd_project/setsecret')
 
 }
 
