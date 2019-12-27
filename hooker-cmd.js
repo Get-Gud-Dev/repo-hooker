@@ -3,17 +3,13 @@ const command = process.argv[2]
 
 const db = require('./db/hookerDB')
 
-const Project = require('./schema/project').Model
-
-const crypto = require('crypto')
-
 const commands = {
-    addproject: require('./cmd_project/addproject'),
-    addcommand: require('./cmd_project/addcommand'),
-    listcommands: require('./cmd_project/listcommands'),
-    listprojects: require('./cmd_project/listprojects'),
-    setpath: require('./cmd_project/setpath'),
-    setsecret: require('./cmd_project/setsecret')
+    addproject: require('./commands/addproject'),
+    addcommand: require('./commands/addcommand'),
+    listcommands: require('./commands/listcommands'),
+    listprojects: require('./commands/listprojects'),
+    setpath: require('./commands/setpath'),
+    setsecret: require('./commands/setsecret')
 
 }
 
@@ -25,9 +21,7 @@ db.connect(() =>{
 
     if(targetCommand != null)
     {
-
         targetCommand(process.argv)
-
     }
     else{
         console.log("Command not found!")

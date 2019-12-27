@@ -2,9 +2,6 @@ const mongoose = require('mongoose')
 
 var hookerModel = require('../schema/hookRequest').Model
 
-var hookerCache = []
-
-
 exports.connect = function(callback){
 
     mongoose.connect('mongodb://localhost:27017/repo-hooker', {useNewUrlParser:true, useUnifiedTopology:true})
